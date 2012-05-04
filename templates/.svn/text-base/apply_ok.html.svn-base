@@ -1,0 +1,10 @@
+{% extends "base_bootstrp.html" %}
+{% block body_header %}
+{% endblock %}
+{% block body_content %}
+<div class="span14" style="width:600px">
+<h2>QSS 邀请码已经申请</h2>
+<p>QSS已经受理你的申请,我们会在合适的时候为您发送邀请码，谢谢你对QSS关注。</p>
+
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+    Copyright 2011 timger
+    
+    +Author timger
+    +Gtalk&Email yishenggudou@gmail.com
+    +Msn yishenggudou@msn.cn
+    +Twitter http://twitter.com/yishenggudou  @yishenggudou
+    +Weibo http://t.sina.com/zhanghaibo @timger
+    @qiyi
+'''
+from django.shortcuts import redirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.http import HttpResponse
+from sqlalchemy import and_, or_, desc
+import settings 
+import requests
+import md5
+import os
+try:
+    import json
+except:
+    from django.utils import simplejson as json
+
+def machine(request, machine_id=None,operate=None,option='status', datatype='json'):
+    u"""
+    :machine_id 机器的标示
+    :operate 操作类型 
+    :option 对机器的操作[查看|启动|添加|等]
+    :datatype [json|html|xml]
+    return [<Machine Object option info>,]
+    """
+    _macs,rst = [],[]
+    if str(machine_id).upper() == 'ALL':
+        u"取得所以的machine"
+        _macs = allmac
+    else:
+        _macs = _macs.append(Machine(machine_id))
+     
+    if option == 'status':
+        rst = [ i.status()  for i in _macs ] 
+    elif option == 'start':
+        rst = [ i.start()  for i in _macs ] 
+    elif option == 'stop':
+        rst = [ i.stop() for i in _macs ]
+    elif option == 'restart':
+        rst = [ i.restart() for i in _macs ]
+    elif option == 'add':
+        rst = [ i.add() for i in _macs ]
+    elif option == 'delete':
+        rst = [ i.delete() for i in _macs ]
+    else:
+        rst = [ i.status()  for i in _macs ] 
+
+    if  datatype == 'json':
+        return HttpResponse(json.dumps(rst))
+    elif  datatype == 'xml':
+        return HttpResponse(rst)
+    elif  datatype == 'node':
+        return HttpResponse(rst)
+    elif  datatype == 'map':
+        return HttpResponse(rst)
+    else  datatype == 'html':
+        if str(operate).upper() ==  'query'.upper():
+            return  render_to_response('machine.html',{'form':rst} ,context_instance=RequestContext(request))
+        elif  str(operate).upper() ==  'operate'.upper():
+            return  HttpResponse(json.dumps(rst))
+
+

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates
+END
+apply_ok.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/apply_ok.html
+END
+invite.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/invite.html
+END
+registion.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/registion.html
+END
+apply.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/apply.html
+END
+secret.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/secret.html
+END
+base_bootstrp.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/base_bootstrp.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/login.html
+END
+logout.html
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/logout.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sysnetrd/!svn/ver/2629/trunk/icefishadmin/templates/base.html
+END

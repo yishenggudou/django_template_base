@@ -1,0 +1,27 @@
+{% extends "base_bootstrp.html" %}
+
+
+{% block body_content %}
+<div id="cform"  class="" style="">
+<form class="well" method="post">
+<div class="control-group {% if form.e_email %}error{% endif %}">
+  <label>邮箱地址</label>
+  <input type="text" name="email" class="span3" placeholder="example@example.com" value="{{form.email}}">
+  <span class="help-inline">{{form.email_msg}}</span>
+</div>
+<div class="control-group {% if form.e_password %}error{% endif %}">
+  <label>密码</label>
+  <input type="password" name="password" class="span3" placeholder="*********" value="{{form.password}}">
+  <span class="help-inline">{{form.password_msg}}</span>
+</div>
+  <label></label>
+  <button type="submit" class="btn">提交</button>
+</form>
+    <ul class="nav nav-pills" style="display:none">
+        <li class="active"><a href="/apply/">申请内测</a></li>
+        <li class="active"><a href="/registion/">注册</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+

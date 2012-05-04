@@ -1,4 +1,2 @@
-django_template_base
-====================
+#### 个人django开发模版
 
-个人的django项目模版
