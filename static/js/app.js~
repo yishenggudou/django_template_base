@@ -113,6 +113,7 @@ function App(){
         function(){
         App();
         var tmpl_introduct = $('#tmpl_introduct').html();
+        setInterval(function(){
         setTimeout(function(){
             $.get('introduction',{},function(data){
                 var html = Mustache.to_html(tmpl_introduct,data);
@@ -120,6 +121,8 @@ function App(){
                 $('#introduct').append(html)
             },'json')
         },10)
+        },
+        5000)
 
         }
         )

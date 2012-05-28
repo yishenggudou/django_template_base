@@ -1,0 +1,122 @@
+/**
+ * @author timger <yishenggudou@gmail.com>
+ * @timger http://weibo.com/zhanghaibo
+ * @yishenggudou http://twitter.com/yishenggudou
+ * Copyright (c) 2008-2011 timger - released under MIT License
+ */
+UserModel = Backbone.Model.extend({
+   
+    defaults: {
+      id: "",
+      urlRoot: "",
+      key: "",
+      name: "",
+      email: "",
+      access_key: "",
+      access_secret: ""
+    },
+
+    initialize: function() {
+        this.set({cid:this.cid});
+    } 
+    
+    });
+
+UserView = Backbone.View.extend({
+   
+    initialize:function(){
+        
+        var that = this;
+        this.template=$('#tmpl_users').html();
+        console.log(['------------------'])
+        this.el = $('tr[cid='+this.model.cid+']');
+        
+        // --- model event -------
+        //this.model.bind('change', this.render);
+        this.model.bind('destroy', this.remove);
+        // -- end model event --------------
+        this._events = {};
+        //事件绑定为当前小局部的元素
+        $('tr[cid='+this.model.cid+'] td.name').live("click",this.openuser);
+        $('tr[cid='+this.model.cid+'] td.save').live('click',this.save);
+        //this._events[('click tr[cid='+this.model.cid+'] td.name')] = 'openuser';
+        //this._events[('click tr[cid='+this.model.cid+'] td.save')] = 'save';
+    },
+    render :function(){
+        //渲染数据
+        var to_render = this.model.toJSON();
+        to_render.cid=this.model.cid;
+        console.log(['Start render model user',this.template,to_render])
+        var html = Mustache.to_html(this.template,to_render);
+        if (!$(this.el).length){
+        //元素不存在  追加到区域
+            $('#users').append(html);
+        }else{
+        //元素存在
+            $(this.el).replaceWith(html);
+        };
+        //$(this.el).live("click",function(){})
+    },
+    remove: function (){
+        if (!$(this.el).length){
+        //元素不存在  追加到区域
+            
+        }else{
+        //元素存在
+            $(this.el).destroy();
+        }
+    },
+    toggleViewed:function(){
+        //切换试图现实还是隐藏
+        if ($(this.el).length){
+            if ( $(this.el).is(":visible")){
+                $(this.el).hide();
+            }else{
+                $(this.el).show();
+            }
+        }
+    },
+    
+    events : this._events,
+    //----------------- 事件应答函数  -------------------------
+    openuser : function (){
+       //click the user name 
+    },
+    save : function(){
+        alert("将要保存修改");
+        var access_key = $(this.el).find('.access_key').text(),
+        access_secret = $(this.el).find('.access_secret').text(),
+        password = $(this.el).find('.password').text();
+        this.model.set({password:password,access_key:access_key,access_secret:access_secret}) 
+    } 
+
+    //----------------- end  ----------------------------------
+    });
+
+UserCollection  = Backbone.Collection.extend({
+    model: UserModel,
+    initialize:function(){
+        this.bind('add',this.addobj);
+        this.bind('reset',this.resetsets);
+        this.bind('remove',this.removeobj);
+        //this.bind("change:title",this.changeobj);
+    },
+    // functions for response events ---
+    resetsets:function(obj){
+        console.log(["user Sets has add ",obj]);
+        $('#users tr').destroy();
+        this.each(function(item){
+            console.log(["render model",item]);
+            var userv = new UserView({model:item});
+            userv.render();
+        })
+    },
+    addobj:function(){
+    },
+    removeobj:function(){
+
+    },
+    changeobj:function(){
+    }
+});
+

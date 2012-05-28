@@ -4,24 +4,44 @@
 <!--
 @qiyi - 
 -->
-<link rel="stylesheet" type="text/css" href="/static/css/googlestorage.css" />
-<!--
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.css" />
--->
+
+<script src="/static/js/json2.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/mustache.min.js"></script>
+<script src="/static/js/underscore-min.js"></script>
+<script src="/static/js/backbone-min.js"></script>
+<script src="/static/js/bootstrap-modal.js"></script>
+
 {% block head_css %}
 {% endblock %}
 {% block head_js %}
 {% endblock %}
 </head>
 <body>
+<div class="container">
+<ul class="nav nav-tabs">
+        <li><a href="#">Home</a></li>
+        <li><a href="#hosts">Hosts</a></li>
+        <li><a href="#users">Users</a></li>
+        <li><a href="#buckets">Buckets</a></li>
+</ul>
+
+{% load mustache %}
+{% load straight_include %}
+
 {% block body_header %}
 {% endblock %}
 {% block body_content %}
+{% include "introduct.html" %}
+{% include "users.html" %}
 {% endblock %}
 {% block body_footer %}
 {% endblock %}
 {% block body_footer_js %}
 {% endblock %}
+</div>
 </body>
 </html>

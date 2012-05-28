@@ -1,46 +1,18 @@
-{% load mustache %}
-{% load straight_include %}
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Django + Backbone.js</title>
-
-    <link rel="stylesheet" 
-          href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
-    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
-    <script src="{{ STATIC_URL }}js/backbone-tastypie.js"></script>
-    <script src="{{ STATIC_URL }}js/ICanHaz.min.js"></script>
-    <script>
-      TWEET_API = "{% url api_dispatch_list api_name="v1" resource_name="tweet" %}";
-      {% if data %}
-      app = {loaded: true};
-      {% endif %}
-    </script>
-    <script src="{{ STATIC_URL }}js/app.js"></script>
-
-    <script type="text/html" id="tweetTemplate">
-      {% straight_include "tweetTemplate.mustache" %}
-    </script>
-
-    <script type="text/html" id="listApp">
-      {% straight_include "listApp.mustache" %}
-    </script>
-
-    <script type="text/html" id="detailApp">
-      {% straight_include "detailApp.mustache" %}
-    </script>
-  </head>
-
-  <body>
-    <div id="app">
-      {% if data %}
-      {% mustache "detailApp" data %}
-      {% endif %}
-    </div>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block head_css %}
+{% endblock %}
+{% block head_js %}
+<script src="/static/js/user.js"></script>
+<script src="/static/js/bucket.js"></script>
+<script src="/static/js/index.js"></script>
+<script src="/static/js/host.js"></script>
+<script src="/static/js/app.js"></script>
+{% endblock %}
+{% block body_content %}
+<div id="content">
+{% include "introduct.html" %}
+{% include "users.html" %}
+{% include "buckets.html" %}
+{% include "host.html" %}
+</div>
+{% endblock %}

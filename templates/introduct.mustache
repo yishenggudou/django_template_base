@@ -1,0 +1,37 @@
+<table class="table table-bordered table-condensed" style="width:auto">
+<thead>
+<tr>
+    <th>用户</th>
+    <th>文件</th>
+    <th>用户存储</th>
+    <th>服务器存储</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+   <td></td>
+   <td>({{file_dist_file_num}}/{{file_all_file_num}})</td>
+   <td>{{file_all_space}}G</td>
+   <td>
+        <table class="table">
+        <thead>
+            <tr>
+            <th>可用</th>
+            <th>回收站</th>
+            <th>真实可用</th>
+            <th>最大</th>
+           </tr>
+        </thead>
+        <tbody>
+        <tr>
+           <td>{{dir_used}}G</td>
+           <td>{{dir_recyclebin}}G</td>
+           <td>{{dir_available}}G</td>
+           <td>{{dir_maxsize}}G</td>
+        </tr>
+        </tbody>
+        </table>
+   </tr>
+</tr>
+</tbody>
+</table>

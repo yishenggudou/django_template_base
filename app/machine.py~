@@ -1,0 +1,84 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+    Copyright 2011 timger
+    
+    +Author timger
+    +Gtalk&Email yishenggudou@gmail.com
+    +Msn yishenggudou@msn.cn
+    +Twitter http://twitter.com/yishenggudou  @yishenggudou
+    +Weibo http://t.sina.com/zhanghaibo @timger
+    @qiyi
+'''
+
+import os
+import sys
+import itertools
+try:import json
+except:import simplejson  as json
+
+
+__author__ = 'timger & yishenggudou@gmail.com'
+__license__ = '@qiyi'
+__version__ = (0,0,0)
+
+
+class machine(object):
+    u"""
+    机器也就是节点的操作
+    每个操作返回一个操作信息
+    {
+    macid:machine_id,
+    operate:'',
+    success:[True|False],
+    user:'',
+    message:'',
+    datetime:datetime.now(),
+    }
+    """
+    def __init__(self,machine_id = None)
+       
+        self.mid = machine_id 
+        self.disk = []
+        self.ip = None
+        self.location = None
+        self.bandwidth = None
+        self.status = ''
+        self.queue = []
+        self.info = {}
+        self.database = {}
+
+    def add(self):
+        u"添加到系统"
+        pass
+
+    def delete(self):
+        u"从系统中删除"
+        pass
+
+    def add_disk(self):
+        u"添加硬盘"
+        pass
+
+    def disk_backup(self):
+        pass
+
+    def status_queue(self):
+        pass
+
+    def status_database(self):
+        pass
+
+    def status_disk(self):
+        pass
+
+    def start(self):
+        pass
+
+    def stop(self):
+        pass
+
+    def restart(self):
+        pass
+
+

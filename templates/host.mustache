@@ -1,0 +1,64 @@
+<tr class="hosttr" id="{{cid}}" cid="{{cid}}">
+<td class="host" style="width:80px;
+{{#is_bug}}
+background-color:#bbb
+{{/is_bug}}
+">
+{{host}}
+<a href="javascript:void(0)" onclick="javascript:addpath(this)"  sid="{{id}}">添加</a>
+</td>
+<td    style="width:600px;
+{{#is_offline}}background-color:#bbb{{/is_offline}}
+{{#is_bug}}background-color:#bbb{{/is_bug}}
+
+">
+<table class=""  WIDTH="800px" 
+style="
+{{#is_offline}} background-color:#bbb {{/is_offline}}
+{{#is_bug}}background-color:#bbb{{/is_bug}}
+"
+ >
+<thead>
+</thead>
+<col width="100" />
+<col width="50" />
+<tbody>
+{{#data}}
+{{#paths}}
+<tr class="host"  id="{{cid}}" cid="{{cid}}-{{index}}" height="20px">
+    <!--<td class="host" rowspan="{{length}}">{{host}}<td>-->
+    <!-- <td class="ip">{{ip}}<td> -->
+    <td class="path" width="120px">{{path}}</td>
+    <td class="used" width="120px">{{used}}</td>
+    <td class="recyclebin" width="120px">{{recyclebin}}</td>
+    <td class="available" width="120px" {{#available_alert}} style="background-color:red" {{/available_alert}} >{{available}}</td>
+    <td class="free_space" width="120px">{{free_space}}</td>
+    <td class="maxsize" width="120px" contenteditable="true">{{maxsize}}</td>
+    <td class="process" width="120px">
+    <progress style="width:60px;color:#7e97a9;background-color:#ffffff" value="{{usebar}}" max="100" title="{{usebar}}%"></progress>
+    </td>
+    <td class="process" width="120px">
+    <progress style="width:60px;color:#7e97a9;background-color:#ffffff" value="{{use_tash_bar}}" max="100" title="{{use_tash_bar}}%"></progress>
+    </td>
+
+    <td dis="switch" path="{{path}}" hostid="{{host}}" pid="{{id}}">
+    {{#is_online}}
+    <span class="badge" todo="offline">下线</span>
+    {{/is_online}} 
+    {{#is_bug}}
+    <span class="badge" todo="debug">故障</span>
+    {{/is_bug}} 
+    {{#is_offline}} 
+    <span class="badge badge-success" todo="online">上线</span>
+    {{/is_offline}}
+    {{#is_recover}} 
+    <span class="badge" todo="recover">恢复ing</span>
+    {{/is_recover}}
+    <td dis="save"><span dis="save" class="label label-info">save</span></td>
+</tr>
+{{/paths}}
+{{/data}}
+</tbody>
+</table>
+</td>
+</tr>
