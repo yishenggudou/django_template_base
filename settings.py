@@ -132,7 +132,10 @@ INSTALLED_APPS = (
      'django.contrib.admindocs',
 )
 
-
+#https://docs.djangoproject.com/en/dev/topics/http/views/
+handler500 = 'mysite.views.my_custom_error_view'
+handler404 = 'mysite.views.my_custom_404_view'
+handler403 = 'mysite.views.my_custom_permission_denied_view'
 
 
 ################# for web app #################################
